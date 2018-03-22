@@ -6,12 +6,16 @@ import os
 from apscheduler.schedulers.blocking import BlockingScheduler
 
  
+def sendraw();
+    api_url = 'http://processhit:8000/processhit'
+    create_row_data = {'id': '1235'}
+    print(create_row_data)
+    r = requests.post(url=api_url, json=create_row_data)
+    print(r.status_code, r.reason, r.text)
 
 
 def ingest():
-
     logging.info('ingest completed.')
-
 
     
 if __name__ == '__main__':
