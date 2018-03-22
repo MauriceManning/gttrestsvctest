@@ -2,16 +2,18 @@ import logging
 import pprint
 from datetime import datetime
 import os
+import requests
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 
  
-def sendraw();
-    api_url = 'http://processhit:8000/processhit'
+def sendraw():
+    api_url = 'http://processhit:8000/processhit/'
     create_row_data = {'id': '1235'}
     print(create_row_data)
+    logging.info('sendraw post...')
     r = requests.post(url=api_url, json=create_row_data)
-    print(r.status_code, r.reason, r.text)
+    logging.info('sendraw results: ' + str(r.status_code) + ' ' + str( r.reason) + ' ' +  str(r.text))
 
 
 def ingest():
@@ -35,7 +37,7 @@ if __name__ == '__main__':
 
     
     scheduler = BlockingScheduler()
-    scheduler.add_job(ingest, 'interval', seconds=30)
+    scheduler.add_job(sendraw, 'interval', seconds=30)
     print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
 
     try:

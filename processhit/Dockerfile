@@ -9,7 +9,8 @@ ADD . /work
 WORKDIR /work
 
 COPY processhit.py .
+COPY app.py .
 RUN chmod a+x ./processhit.py
+RUN chmod a+x ./app.py
 
-
-CMD ["python", "./processhit.py"]
+CMD ["gunicorn", "app:api"]

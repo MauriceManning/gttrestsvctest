@@ -13,7 +13,7 @@ services:
             - 3000:3000
             - 9000:9000
         links:
-            - mongodb
+            - processhit:processhit
         depends_on:
             - processhit
 
@@ -28,6 +28,6 @@ services:
             - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
         ports:
             - 3001:3001
-            - 9001:9001
-        links:
-            - mongodb
+            - 8000:8000
+        expose:
+            - 8000
