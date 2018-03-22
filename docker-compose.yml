@@ -1,0 +1,33 @@
+version: '3'
+services:
+    ingestproto:
+        build: ./ingestproto
+        image: ingestproto:1.0
+        container_name: "ingestproto"
+        environment:
+            - FOO=bar
+        volumes:
+            - ${HOME}/Dev/code/gtt/ingestproto/:/code/test/:rw
+            - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
+        ports:
+            - 3000:3000
+            - 9000:9000
+        links:
+            - mongodb
+        depends_on:
+            - processhit
+
+    processhit:
+        build: ./processhit
+        image: processhit:1.0
+        container_name: "processhit"
+        environment:
+            - FOO=bar
+        volumes:
+            - ${HOME}/Dev/code/gtt/processhit/:/code/publish/:rw
+            - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
+        ports:
+            - 3001:3001
+            - 9001:9001
+        links:
+            - mongodb
