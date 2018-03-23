@@ -9,9 +9,9 @@ services:
         volumes:
             - ${HOME}/Dev/code/gtt/ingestproto/:/code/test/:rw
             - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
-        ports:
-            - 3000:3000
-            - 9000:9000
+        #ports:
+        #    - 3000:3000
+        #    - 9000:9000
         depends_on:
             - processhit
 
@@ -25,6 +25,6 @@ services:
             - ${HOME}/Dev/code/gtt/processhit/:/code/publish/:rw
             - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
         ports:
-            - 3001:3001
-        expose:
-            - 8000
+            - 8000:8000
+        #expose:
+        #    - 8000

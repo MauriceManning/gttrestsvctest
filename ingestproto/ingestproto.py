@@ -18,13 +18,6 @@ def sendraw():
     except:
         logging.error('sendraw failed')
 
-    try:
-        api_url = 'http://processhit:8000/processhit/processhit'
-        r = requests.post(url=api_url, data=raw_data)
-        logging.info('sendraw results: ' + str(r.status_code) + ' ' + str( r.reason) + ' ' +  str(r.text))
-    except:
-        logging.error('sendraw failed')
-
 
 def ingest():
     logging.info('ingest completed.')
