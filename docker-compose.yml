@@ -9,16 +9,12 @@ services:
         volumes:
             - ${HOME}/Dev/code/gtt/ingestproto/:/code/test/:rw
             - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
-        #ports:
-        #    - 3000:3000
-        #    - 9000:9000
         depends_on:
             - processhit
 
     processhit:
         build: ./processhit
         image: gttprocesshit
-        #container_name: "processhit"
         environment:
             - FOO=bar
         volumes:
@@ -26,5 +22,10 @@ services:
             - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
         ports:
             - 8000:8000
-        #expose:
-        #    - 8000
+
+    observatory-service:
+        build: ./observatory  # path is relative to docker-compose.yml localtion
+    volumes:
+        - ${HOME}/Dev/code/gtt/observatory:/usr/src/app # mount point
+    ports:
+        - 5001:80  # host:container
