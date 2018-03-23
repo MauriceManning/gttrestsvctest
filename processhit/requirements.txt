@@ -2,3 +2,4 @@ pprint
 apscheduler
 falcon
 gunicorn
+requests

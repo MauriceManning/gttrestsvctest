@@ -2,8 +2,8 @@ version: '3'
 services:
     ingestproto:
         build: ./ingestproto
-        image: ingestproto:1.0
-        container_name: "ingestproto"
+        image: gttingestproto
+        #container_name: "ingestproto"
         environment:
             - FOO=bar
         volumes:
@@ -12,15 +12,13 @@ services:
         ports:
             - 3000:3000
             - 9000:9000
-        links:
-            - processhit:processhit
         depends_on:
             - processhit
 
     processhit:
         build: ./processhit
-        image: processhit:1.0
-        container_name: "processhit"
+        image: gttprocesshit
+        #container_name: "processhit"
         environment:
             - FOO=bar
         volumes:
@@ -28,6 +26,5 @@ services:
             - ${HOME}/Dev/code/gtt/logs/:/code/logs/:rw
         ports:
             - 3001:3001
-            - 8000:8000
         expose:
             - 8000

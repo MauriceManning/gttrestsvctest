@@ -1,4 +1,6 @@
 import logging
+import json
+import falcon
 
 class ProcessHit(object):
 
@@ -11,6 +13,8 @@ class ProcessHit(object):
                     filemode='w')
 	
     def on_get(self, req, resp):
+        print('-- on_get')
+        logging.debug('-- on_get')
         payload = {'foo':'bar'}
         resp.body = json.dumps(payload)
         resp.status = falcon.HTTP_200
@@ -18,8 +22,9 @@ class ProcessHit(object):
 
     def on_post(self, req, resp):	
         """Handles POST requests"""
+        print('-- on_post')
         try:
             raw_json = req.stream.read()
             logging.info('on_post: ' + str(raw_json))
         except Exception as ex:
-            raise falcon.HTTPError(falcon.HTTP_400,'Error',ex.message)
+            logging.error('on_post: ' + ex.message)

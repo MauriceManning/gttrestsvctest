@@ -13,4 +13,4 @@ COPY app.py .
 RUN chmod a+x ./processhit.py
 RUN chmod a+x ./app.py
 
-CMD ["gunicorn", "app:api"]
+CMD ["gunicorn", "app"]
