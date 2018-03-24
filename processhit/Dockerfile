@@ -13,4 +13,6 @@ COPY app.py .
 RUN chmod a+x ./processhit.py
 RUN chmod a+x ./app.py
 
-CMD ["gunicorn", "app"]
+# https://stackoverflow.com/questions/36014384/docker-fails-to-access-a-gunicorn-served-resource-in-the-host
+
+CMD ["gunicorn", "-b", "0.0.0.0:8000",  "app"]

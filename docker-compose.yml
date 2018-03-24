@@ -24,8 +24,8 @@ services:
             - 8000:8000
 
     observatory-service:
-        build: ./observatory  # path is relative to docker-compose.yml localtion
-    volumes:
-        - ${HOME}/Dev/code/gtt/observatory:/usr/src/app # mount point
-    ports:
-        - 5001:80  # host:container
+        build: ./flasktest
+        volumes:
+            - ${HOME}/Dev/code/gtt/flasktest:/usr/src/app 
+        ports:
+            - 5001:80  # host:container
