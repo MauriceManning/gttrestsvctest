@@ -2,3 +2,4 @@ apscheduler
 falcon
 gunicorn
 requests
+json-logging-py
